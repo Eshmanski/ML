@@ -12,4 +12,3 @@ def plot_points(features, labels):
     pyplot.scatter(x, y, color='blue', zorder=10)
     pyplot.xlabel('number of rooms')
     pyplot.ylabel('prices')
-    pyplot.show()
