@@ -16,7 +16,7 @@ middleAreas = np.array([])
 features = np.array([1,2,3,5,6,7])
 labels = np.array([155, 197, 244, 356,407,448])
 
-with open('./LinearRegression/Hyderabad.csv', 'r') as file:
+with open('../_Mock/Hyderabad.csv', 'r') as file:
     reader = csv.reader(file)
     line = 0
     for row in reader:
@@ -24,11 +24,9 @@ with open('./LinearRegression/Hyderabad.csv', 'r') as file:
             prices = np.append(prices, float(row[0]))
             areas = np.append(areas, float(row[1]))
             badrooms = np.append(badrooms, float(row[3]))
-        if line == 1001:
-            break
         line += 1
 
-    size = 20
+    size = 5
     j = 0
     while j < len(prices)-1:
         middlePrices = np.append(middlePrices, np.median(prices[j:j+size]))
@@ -43,8 +41,8 @@ def rmse(labels, predictions):
 def linear_regression(data, learning_rate=0.01, epochs = 1000):
     errors = []
     demensions = len(data)
-    # parameters = np.array([random.random() for _ in range(demensions)])
-    parameters = np.array([15000, 1])
+    parameters = np.array([random.random() for _ in range(demensions)])
+    # parameters = np.array([15000, 1])
     point = np.array([data[i][0] for i in range(demensions)])
     
     for epoch in range(epochs):
@@ -72,4 +70,4 @@ print(middlePrices)
 print(middleAreas)
 # utils.plot_points(areas, prices)
 utils.plot_points(middleAreas, middlePrices)
-linear_regression(np.array([middlePrices, middleAreas]), epochs=10000, learning_rate=0.0000001)
+linear_regression(np.array([middlePrices, middleAreas]), epochs=100000, learning_rate=0.0000001)

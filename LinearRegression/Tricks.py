@@ -1,3 +1,4 @@
+import random
 import numpy as np
 
 def simple_trick(base_price, price_per_room, num_rooms, price):
